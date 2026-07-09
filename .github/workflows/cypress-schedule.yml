@@ -48,4 +48,4 @@ jobs:
             Verifique o repositório e os artefatos para detalhes.
           to: ${{ secrets.EMAIL_RECIPIENTS }}
           from: ${{ secrets.EMAIL_FROM }}
-          secure: true
+          secure: false
