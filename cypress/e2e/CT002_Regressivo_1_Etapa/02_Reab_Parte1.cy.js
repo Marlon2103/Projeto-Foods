@@ -54,7 +54,7 @@ describe('[Regressivo] 02 - Reab Parte 1 (Login + Buscar OT Pendente)', () => {
     // Deslogar do sistema
     cy.get('span[data-slot="avatar-fallback"]', { timeout: 20000 }).first().should('be.visible').click();
     cy.wait(1000);
-    cy.get('#radix-_R_11aknpflbH1_ > .text-destructive', { timeout: 20000 }).should('be.visible').click();
+    cy.contains('[role="menuitem"]', 'Sair').click();
     cy.url().should('include', '/login');
     cy.get('input[type="email"], input[name="email"], input[type="text"]', { timeout: 20000 }).should('be.visible');
     cy.log('✅ Check OK - Logout realizado com sucesso');

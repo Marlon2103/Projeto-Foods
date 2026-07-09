@@ -73,7 +73,7 @@ describe('[Regressivo] 04 - Reab Parte 2 (Login + Validar OT Finalizada)', () =>
     //Deslogar do sistema
     cy.get('span[data-slot="avatar-fallback"]').first().should('be.visible').click()
     cy.wait(1000);
-    cy.get('.text-destructive').should('be.visible').click()
+    cy.contains('[role="menuitem"]', 'Sair').click();
     cy.url().should('include', '/login')
     cy.get('input[type="email"], input[name="email"], input[type="text"]').should('be.visible')
     cy.log('✅ Check OK - Logout realizado com sucesso')
