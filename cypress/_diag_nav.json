@@ -1,0 +1,18 @@
+{
+  "navigatorWebdriver": true,
+  "hasFocus": true,
+  "visibilityState": "visible",
+  "selfEqTop": false,
+  "parentEqWin": false,
+  "frameElement": "null",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/15.18.0 Chrome/138.0.7204.251 Electron/37.6.0 Safari/537.36",
+  "totalButtons": 1,
+  "temHeader": false,
+  "operacaoVisivel": false,
+  "overviewVisivel": false,
+  "logs": [
+    "SPOOF OK: parent",
+    "SPOOF OK: frameElement",
+    "webdriver override OK"
+  ]
+}
