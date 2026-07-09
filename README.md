@@ -16,16 +16,20 @@ npm install
 npm test
 ```
 
-3. Execute apenas o CT031:
+3. Execute o conjunto de CTs que você quer versionar:
 
 ```bash
-npm run test:ct031
+npm run test:ct:selected
 ```
 
-4. Execute apenas o CT017:
+4. Execute apenas um CT específico:
 
 ```bash
+npm run test:ct002
+npm run test:ct004
 npm run test:ct017
+npm run test:ct018
+npm run test:ct027
 ```
 
 ## GitHub Actions

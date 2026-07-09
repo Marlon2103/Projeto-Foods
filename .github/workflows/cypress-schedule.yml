@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Run Cypress tests
-        run: npx cypress run --spec "cypress/e2e/CT031_Sequencia_Palete/**/*.cy.js"
+        run: npx cypress run --spec "cypress/e2e/CT002_Regressivo_1_Etapa/**/*.cy.js" "cypress/e2e/CT004_OT_Pendente/**/*.cy.js" "cypress/e2e/CT017_Tord_Nao_Confirma/**/*.cy.js" "cypress/e2e/CT018_Regressivo_Tord_Confirma/**/*.cy.js" "cypress/e2e/CT027_Confirma_Estoque/**/*.cy.js"
 
       - name: Upload test artifacts
         uses: actions/upload-artifact@v4
