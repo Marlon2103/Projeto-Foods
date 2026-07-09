@@ -51,7 +51,7 @@ No repositório GitHub, adicione os seguintes segredos:
 
 ### Agendamento
 
-O workflow está configurado para executar toda segunda-feira às 08:00 UTC.
+O workflow está configurado para executar diariamente às 08:00 UTC.
 
 ### Personalizar suíte
 
