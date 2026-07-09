@@ -1,0 +1,19 @@
+{
+  "name": "projeto-brf",
+  "version": "1.0.0",
+  "description": "Projeto de testes Cypress - BRF",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "cypress run",
+    "test:ct031": "cypress run --spec \"cypress/e2e/CT031_Sequencia_Palete/**/*.cy.js\"",
+    "test:ct017": "cypress run --spec \"cypress/e2e/CT017_Tord_Nao_Confirma/**/*.cy.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^15.17.0"
+  }
+}

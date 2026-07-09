@@ -1,0 +1,51 @@
+name: Scheduled Cypress Tests
+
+on:
+  schedule:
+    - cron: '0 8 * * 1' # toda segunda-feira às 08:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Cypress tests
+        run: npx cypress run --spec "cypress/e2e/CT031_Sequencia_Palete/**/*.cy.js"
+
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-results
+          path: |
+            cypress/videos
+            cypress/screenshots
+            cypress/failures
+
+      - name: Send email notification
+        if: always()
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "Cypress Scheduled Test Results"
+          body: |
+            O workflow do GitHub Actions executou os testes Cypress.
+            Status: ${{ job.status }}
+            Verifique o repositório e os artefatos para detalhes.
+          to: ${{ secrets.EMAIL_RECIPIENTS }}
+          from: ${{ secrets.EMAIL_FROM }}
+          secure: true
