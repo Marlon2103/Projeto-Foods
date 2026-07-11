@@ -175,6 +175,31 @@ function carregarDadosTORD() {
   });
 }
 
+function gerarShipmentVars() {
+  const shipmentVars = {
+    DELID: String(parseInt(gerarNumero(10), 10)),
+    SHPID: String(parseInt(gerarNumero(10), 10)),
+  };
+
+  Cypress.env('shipment_vars', shipmentVars);
+  cy.writeFile('cypress/fixtures/shipment_vars.json', shipmentVars);
+  cy.log('📦 Shipment vars gerados:');
+  cy.log(`   DELID: ${shipmentVars.DELID}`);
+  cy.log(`   SHPID: ${shipmentVars.SHPID}`);
+
+  return shipmentVars;
+}
+
+function carregarShipmentVars() {
+  return cy.readFile('cypress/fixtures/shipment_vars.json').then((shipmentVars) => {
+    Cypress.env('shipment_vars', shipmentVars);
+    cy.log('📦 Shipment vars carregados do arquivo:');
+    cy.log(`   DELID: ${shipmentVars.DELID}`);
+    cy.log(`   SHPID: ${shipmentVars.SHPID}`);
+    return cy.wrap(shipmentVars);
+  });
+}
+
 module.exports = {
   gerarDOCNUM,
   gerarTANUM,
@@ -187,4 +212,6 @@ module.exports = {
   gerarCRETIM,
   gerarDadosTORD,
   carregarDadosTORD,
+  gerarShipmentVars,
+  carregarShipmentVars,
 };
