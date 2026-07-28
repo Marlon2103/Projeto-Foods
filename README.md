@@ -42,12 +42,14 @@ Ele roda os testes agendados e envia um e-mail com o resultado.
 
 No repositório GitHub, adicione os seguintes segredos:
 
-- `SMTP_SERVER`
-- `SMTP_PORT`
-- `SMTP_USERNAME`
-- `SMTP_PASSWORD`
-- `EMAIL_FROM`
+- `SMTP_SERVER` (ex: `smtp.gmail.com`)
+- `SMTP_PORT` (ex: `587`)
+- `SMTP_USERNAME` (ex: `seu.email@gmail.com`)
+- `SMTP_PASSWORD` (senha de app do Gmail ou senha SMTP válida)
+- `EMAIL_FROM` (opcional, pode ser igual a `SMTP_USERNAME`)
 - `EMAIL_RECIPIENTS`
+
+Se usar Gmail, confirme que a conta permite SMTP e que você está usando uma senha de app se o 2FA estiver habilitado.
 
 ### Agendamento
 

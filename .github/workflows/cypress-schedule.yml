@@ -37,8 +37,9 @@ jobs:
         if: always()
         uses: dawidd6/action-send-mail@v4
         with:
-          server_address: ${{ secrets.SMTP_SERVER }}
-          server_port: ${{ secrets.SMTP_PORT }}
+          # Defaults to Gmail SMTP when secrets are not provided
+          server_address: ${{ secrets.SMTP_SERVER || 'smtp.gmail.com' }}
+          server_port: ${{ secrets.SMTP_PORT || '587' }}
           username: ${{ secrets.SMTP_USERNAME }}
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: "Cypress Scheduled Test Results"
@@ -47,5 +48,5 @@ jobs:
             Status: ${{ job.status }}
             Verifique o repositório e os artefatos para detalhes.
           to: ${{ secrets.EMAIL_RECIPIENTS }}
-          from: ${{ secrets.EMAIL_FROM }}
-          secure: false
+          from: ${{ secrets.EMAIL_FROM || secrets.SMTP_USERNAME }}
+          secure: true
