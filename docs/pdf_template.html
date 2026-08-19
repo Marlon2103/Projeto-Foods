@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="./" />
+    <style>
+      :root{--brand:#ffcc00;--bg:#000;--text:#111}
+      html,body{height:100%;margin:0;font-family:Inter,Arial,Helvetica,sans-serif;color:var(--text)}
+      header{position:fixed;top:0;left:0;right:0;height:100px;background:var(--bg);color:var(--brand);display:flex;align-items:center;padding:12px 36px;box-sizing:border-box}
+      header img{height:76px;margin-right:18px}
+      header .title{font-size:18px;font-weight:700}
+      footer{position:fixed;bottom:0;left:0;right:0;height:48px;background:#fff;padding:8px 36px;box-sizing:border-box;color:#666;border-top:1px solid #eee}
+      .cover{page-break-after:always;display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;background:#fff}
+      .cover .logo{height:120px}
+      .cover h1{margin-top:24px;font-size:28px;color:var(--bg)}
+      .cover p{color:#333;max-width:800px;text-align:center}
+      .toc{margin-top:140px}
+      .content{padding:120px 48px 80px 48px}
+      h1{color:var(--brand);margin-top:28px}
+      h2{color:#222;border-bottom:2px solid #f1f1f1;padding-bottom:6px}
+      .section{margin-bottom:20px}
+      table{width:100%;border-collapse:collapse;margin:12px 0}
+      table th,table td{border:1px solid #e6e6e6;padding:8px;text-align:left}
+      pre{background:#f8f8f8;padding:12px;border-radius:6px;overflow:auto}
+      .muted{color:#666;font-size:12px}
+      @page{size:A4;margin:140px 40px 80px 40px}
+      @media print{header,footer{display:block}}
+    </style>
+  </head>
+  <body>
+    <!-- Cover (optional) -->
+    <div class="cover">
+      <img class="logo" src="logo.png" alt="logo"/>
+      <h1>Projeto BRF — Relatório de Testes E2E</h1>
+      <p class="muted">Documento consolidado de testes automatizados, descrevendo suites, configuração, e diretrizes para stakeholders.</p>
+    </div>
+
+    <!-- Header for subsequent pages -->
+    <header>
+      <img src="logo.png" alt="logo"/>
+      <div class="title">Projeto BRF — Testes E2E</div>
+    </header>
+
+    <div class="content">
+      {{content}}
+    </div>
+
+    <footer>
+      Invent — smart intralogistics solutions · Relatório gerado em: {{generatedDate}}
+    </footer>
+  </body>
+</html>
