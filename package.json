@@ -12,12 +12,15 @@
     "test:ct017": "cypress run --spec \"cypress/e2e/CT017_Tord_Nao_Confirma/**/*.cy.js\"",
     "test:ct018": "cypress run --spec \"cypress/e2e/CT018_Regressivo_Tord_Confirma/**/*.cy.js\"",
     "test:ct027": "cypress run --spec \"cypress/e2e/CT027_Confirma_Estoque/**/*.cy.js\"",
-    "test:ct:selected": "cypress run --spec \"cypress/e2e/CT002_Regressivo_1_Etapa/**/*.cy.js\" \"cypress/e2e/CT004_OT_Pendente/**/*.cy.js\" \"cypress/e2e/CT017_Tord_Nao_Confirma/**/*.cy.js\" \"cypress/e2e/CT018_Regressivo_Tord_Confirma/**/*.cy.js\" \"cypress/e2e/CT027_Confirma_Estoque/**/*.cy.js\""
+    "test:ct:selected": "cypress run --spec \"cypress/e2e/CT002_Regressivo_1_Etapa/**/*.cy.js\" \"cypress/e2e/CT004_OT_Pendente/**/*.cy.js\" \"cypress/e2e/CT017_Tord_Nao_Confirma/**/*.cy.js\" \"cypress/e2e/CT018_Regressivo_Tord_Confirma/**/*.cy.js\" \"cypress/e2e/CT027_Confirma_Estoque/**/*.cy.js\"",
+    "generate:pdf": "node scripts/generate_pdf.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^15.17.0"
+    "cypress": "^15.17.0",
+    "markdown-it": "^15.0.0",
+    "puppeteer": "^25.8.0"
   }
 }
