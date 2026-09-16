@@ -1,3 +1,71 @@
+
+Projeto BRF — Testes E2E com Cypress
+
+Resumo
+- Suite de testes E2E para integração com o sistema Velox (BRF), implementada com Cypress e organizada em suítes por fluxo/CT.
+
+Requisitos
+- Node.js (v14+ recomendado)
+- npm ou yarn
+
+Instalação rápida
+1. Clone o repositório e instale dependências:
+
+```
+npm install
+```
+
+Quick start
+- Abrir a UI interativa:
+
+```
+npm run cy:open
+```
+
+- Rodar todos os testes em modo headless:
+
+```
+npm test
+```
+
+Scripts úteis (em `package.json`)
+- `npm run cy:open` — abre o Cypress UI.
+- `npm run cy:run` / `npm test` — roda todos os testes em modo headless.
+- `npm run test:ct002` / `test:ct004` / `test:ct017` / `test:ct018` / `test:ct027` — scripts para suites específicas.
+
+Configuração do Cypress
+- `baseUrl` definido em [cypress.config.js](cypress.config.js) como `https://velox2.velox-by-invent.com`.
+- O arquivo também define `projectId` e opções de browser (flags para Chromium e preferências para Firefox). Observação: o topo do `cypress.config.js` também define `process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'` (uso em ambientes com certificados autoassinados).
+
+Estrutura do repositório (resumida)
+- `cypress/e2e/` — specs organizadas por suíte (ex.: `CT002_Regressivo_1_Etapa`, `CT031_Sequencia_Palete`, etc.).
+- `cypress/fixtures/` — arquivos JSON usados como dados (ex.: `tordDados.json`, `tordSequencia.json`).
+- `cypress/support/` — comandos e inicialização global (`commands.js`, `e2e.js`).
+- `cypress/support/utils/` — utilitários para gerar/carregar dados (`gerarDados.js`).
+
+Como os testes estão organizados
+- Cada suíte contém specs que representam cenários do fluxo de negócio. Exemplos:
+	- `CT031_Sequencia_Palete` contém specs que carregam fixtures (`tordSequencia_detailed.json`) e validam sequências de OT/Palete via UI.
+	- Algumas specs fazem chamadas HTTP para enviar/validar XML (ex.: `01_TORD_Pendente.cy.js`).
+
+Geração e uso de dados únicos
+- `cypress/support/utils/gerarDados.js` fornece helpers:
+	- `gerarDadosTORD()` — gera `DOCNUM`, `TANUM`, `SERIAL`, `ID_ABASTEC`, `LENUM`, `ZVFDAT`, `CHARG`, `CREDAT`, `CRETIM`;
+	- Salva o objeto em `Cypress.env('tordDados')` e em `cypress/fixtures/tordDados.json` via `cy.writeFile()` para compartilhamento entre specs.
+
+Adicionar novos testes
+- Criar um arquivo `.cy.js` em uma pasta dentro de `cypress/e2e/` correspondente à suite.
+- Para testes que precisam de dados únicos, invoque `gerarDadosTORD()` no `before()` do spec.
+
+Troubleshooting rápido
+- Erros de certificado: `cypress.config.js` já aplica flags para ignorar erros em Chrome/Chromium e define `NODE_TLS_REJECT_UNAUTHORIZED = '0'`.
+- Timeouts: ajuste `pageLoadTimeout` e `defaultCommandTimeout` em `cypress.config.js`.
+- Falhas intermitentes: use `cy.on('uncaught:exception', () => false)` dentro do spec quando apropriado (já usado em várias specs).
+
+Onde encontrar mais detalhes
+- Documentação específica de testes e instruções: [docs/tests.md](docs/tests.md).
+- Setup e CI: [docs/setup.md](docs/setup.md).
+- Descrição dos fixtures e utilitários: [docs/fixtures.md](docs/fixtures.md).
 # Projeto BRF - Cypress
 
 Este repositório contém testes Cypress para o projeto BRF.

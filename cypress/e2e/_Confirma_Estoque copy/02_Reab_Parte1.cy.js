@@ -15,7 +15,7 @@ describe('[Regressivo] 02 - Reab Parte 1 (Login + Buscar OT Pendente)', () => {
     cy.intercept('POST', '**/login**').as('loginRequest');
     
     cy.get('input[type="email"], input[name="email"], input[type="text"]').first().type('velox');
-    cy.get('input[type="password"]').type('xocJ20q71qUSqNatqo');
+    cy.get('input[type="password"]').type('Sysvent@D3V');
     cy.get('.group > .flex').click();
 
     //Verifica se o login foi bem sucedido e a página de workspace foi carregada

@@ -1,0 +1,33 @@
+name: Generate Docs PDF
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'docs/**'
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies for conversion
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc wkhtmltopdf
+
+      - name: Convert MD to HTML
+        run: |
+          pandoc docs/CONSOLIDATED_DOCUMENTATION.md -s -o docs/CONSOLIDATED_DOCUMENTATION.html
+
+      - name: Convert HTML to PDF
+        run: |
+          wkhtmltopdf docs/CONSOLIDATED_DOCUMENTATION.html docs/CONSOLIDATED_DOCUMENTATION.pdf
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: consolidated-documentation-pdf
+          path: docs/CONSOLIDATED_DOCUMENTATION.pdf

@@ -13,7 +13,7 @@ describe('[Regressivo] 04 - Reab Parte 2 (Login + Validar OT Finalizada)', () =>
       cy.visit('/login');
       cy.intercept('POST', '**/login**').as('loginRequest');
       cy.get('input[type="email"], input[name="email"], input[type="text"]').first().clear().type('velox');
-      cy.get('input[type="password"]').clear().type('xocJ20q71qUSqNatqo');
+      cy.get('input[type="password"]').clear().type('Sysvent@D3V');
       cy.get('.group > .flex').click();
       cy.wait('@loginRequest', { timeout: 120000 });
       cy.visit('/workspace', { timeout: 180000, failOnStatusCode: false });

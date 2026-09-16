@@ -15,7 +15,7 @@ describe('[Regressivo] 02 - Cancela Remessa e Verifica Criação de Onda', () =>
     cy.intercept('POST', '**/login**').as('loginRequest');
     
     cy.get('input[type="email"], input[name="email"], input[type="text"]').first().type('velox');
-    cy.get('input[type="password"]').type('xocJ20q71qUSqNatqo');
+    cy.get('input[type="password"]').type('Sysvent@D3V');
     cy.get('.group > .flex').click();
 
     //Verifica se o login foi bem sucedido e a página de workspace foi carregada
@@ -54,7 +54,7 @@ describe('[Regressivo] 02 - Cancela Remessa e Verifica Criação de Onda', () =>
     cy.get('button[role="checkbox"][aria-label="Select row"]').first().click();
     cy.get('button[aria-label="Cancelar remessa(s)"]').should('be.visible').click();
     cy.get('#login').should('be.visible').type('velox');
-    cy.get('#senha').should('be.visible').type('xocJ20q71qUSqNatqo');
+    cy.get('#senha').should('be.visible').type('Sysvent@D3V');
     cy.get('#motivo').should('be.visible').type('Teste Cyress CT032 integra e cancela remessa e verifica criacao de onda');
     cy.contains('button', 'Autorizar').should('be.visible').click();
     cy.wait(1000);

@@ -13,18 +13,24 @@ describe('[Regressivo] 02 - Reab Parte 1 (Login + Buscar OT Pendente)', () => {
 
   it('Deve realizar login e buscar a OT Pendente', () => {
     cy.intercept('POST', '**/login**').as('loginRequest');
-    
+
     cy.get('input[type="email"], input[name="email"], input[type="text"]').first().type('velox');
-    cy.get('input[type="password"]').type('xocJ20q71qUSqNatqo');
+    cy.get('input[type="password"]').type('Sysvent@D3V');
     cy.get('.group > .flex').click();
 
-    //Verifica se o login foi bem sucedido e a página de workspace foi carregada
-    cy.wait('@loginRequest', { timeout: 120000 });
-    cy.visit('/workspace', {
-      timeout: 180000,
-      failOnStatusCode: false,
+    // Verifica se o login foi bem sucedido e a página de workspace foi carregada
+    cy.wait('@loginRequest', { timeout: 120000 }).its('response.statusCode').should('be.oneOf', [200, 201, 204, 302]);
+
+    cy.location('pathname', { timeout: 180000 }).then((path) => {
+      if (!path.includes('/workspace')) {
+        cy.visit('/workspace', {
+          timeout: 180000,
+          failOnStatusCode: false,
+        });
+      }
     });
-    cy.url({ timeout: 180000 }).should('include', '/workspace');
+
+    cy.location('pathname', { timeout: 180000 }).should('include', '/workspace');
     cy.get('a[title="Operação"]', { timeout: 180000 }).should('be.visible');
 
     // Utiliza as variaveis do TORD
