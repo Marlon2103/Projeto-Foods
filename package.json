@@ -6,6 +6,7 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
+    "test:chrome": "cypress run --browser chrome",
     "test": "cypress run",
     "test:ct002": "cypress run --spec \"cypress/e2e/CT002_Regressivo_1_Etapa/**/*.cy.js\"",
     "test:ct004": "cypress run --spec \"cypress/e2e/CT004_OT_Pendente/**/*.cy.js\"",

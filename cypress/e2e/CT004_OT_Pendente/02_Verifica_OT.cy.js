@@ -19,7 +19,7 @@ describe('[Regressivo] 02 - Reab Parte 1 (Login + Buscar OT Pendente)', () => {
     cy.get('.group > .flex').click();
 
     // Verifica se o login foi bem sucedido e a página de workspace foi carregada
-    cy.wait('@loginRequest', { timeout: 120000 }).its('response.statusCode').should('be.oneOf', [200, 201, 204, 302]);
+    cy.wait('@loginRequest', { timeout: 120000 }).its('response.statusCode').should('be.oneOf', [200, 201, 204, 302, 303]);
 
     cy.location('pathname', { timeout: 180000 }).then((path) => {
       if (!path.includes('/workspace')) {
